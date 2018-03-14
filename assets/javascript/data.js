@@ -16,9 +16,9 @@ var database = firebase.database();
 function saveClick(){
     var employee = {
         name: "name",
-        email: "email",
-        age: 59,
-        comment: "stuff"
+        role: "email",
+        start: "1/1/1900",
+        rate: 5.00
     };
 
     pushEmployee(employee);
