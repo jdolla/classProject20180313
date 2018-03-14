@@ -17,7 +17,7 @@ function saveClick(){
     var employee = {
         name: "name",
         role: "email",
-        start: "1/1/1900",
+        start: "1/1/1999",
         rate: 5.00
     };
 
@@ -25,11 +25,21 @@ function saveClick(){
 }
 
 function pushEmployee(employee) {
-    var e = firebase.database().ref('employees');
-    var eRef = e.push(employee);
+    var eRef = firebase.database().ref('employees'); 
+    var e = eRef.push(employee);
+    console.log(e.toString())
 }
 var emp = firebase.database().ref("employees");
 
 emp.on('child_added', function(childSnaphot, prevChildKey){
 console.log(childSnaphot.val())
 });
+
+
+document.getElementById("add-user").addEventListener("click", function(event){
+event.preventDefault();
+saveClick();
+
+});
+
+
