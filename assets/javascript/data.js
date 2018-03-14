@@ -34,13 +34,18 @@ var emp = firebase.database().ref("employees");
 emp.on('child_added', function (childSnaphot, prevChildKey) {
 
     const child = childSnaphot.toJSON();
+
+    var months = moment().diff(moment(child.start), 'months', true);
+    months = math.round(months);
+    var pay = parseInt(months * parseInt(child.rate));
+
     var tr = $("<tr>");
     $(tr).append($("<td>").html(child.name));
     $(tr).append($("<td>").html(child.role));
     $(tr).append($("<td>").html(child.start));
-    $(tr).append($("<td>"));
+    $(tr).append($("<td>").text(months));
     $(tr).append($("<td>").html(child.rate));    
-    $(tr).append($("<td>"));
+    $(tr).append($("<td>").text(pay));
 
 
 
