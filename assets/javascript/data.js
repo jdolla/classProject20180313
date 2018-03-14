@@ -28,3 +28,8 @@ function pushEmployee(employee) {
     var e = firebase.database().ref('employees');
     var eRef = e.push(employee);
 }
+var emp = firebase.database().ref("employees");
+
+emp.on('child_added', function(childSnaphot, prevChildKey){
+console.log(childSnaphot.val())
+});
