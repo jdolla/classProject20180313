@@ -13,7 +13,7 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
-function saveClick(){
+function saveClick() {
     var employee = {
         name: `${$("#inputName").val()}`,
         role: `${$("#inputRole").val()}`,
@@ -25,20 +25,34 @@ function saveClick(){
 }
 
 function pushEmployee(employee) {
-    var eRef = firebase.database().ref('employees'); 
+    var eRef = firebase.database().ref('employees');
     var e = eRef.push(employee);
     console.log(e.toString())
 }
 var emp = firebase.database().ref("employees");
 
-emp.on('child_added', function(childSnaphot, prevChildKey){
-console.log(childSnaphot.val())
+emp.on('child_added', function (childSnaphot, prevChildKey) {
+
+    const child = childSnaphot.toJSON();
+    var tr = $("<tr>");
+    $(tr).append($("<td>").html(child.name));
+    $(tr).append($("<td>").html(child.role));
+    $(tr).append($("<td>").html(child.start));
+    $(tr).append($("<td>"));
+    $(tr).append($("<td>").html(child.rate));    
+    $(tr).append($("<td>"));
+
+
+
+    $("table").append(tr);
+
+
 });
 
 
-document.getElementById("add-user").addEventListener("click", function(event){
-event.preventDefault();
-saveClick();
+document.getElementById("add-user").addEventListener("click", function (event) {
+    event.preventDefault();
+    saveClick();
 
 });
 
