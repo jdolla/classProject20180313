@@ -35,6 +35,7 @@ emp.on('child_added', function (childSnaphot, prevChildKey) {
 
     const child = childSnaphot.toJSON();
 
+        console.log(child.start);
     var months = moment().diff(moment(child.start), 'months', true);
     months = Math.round(months);
     var pay = parseInt(months * parseInt(child.rate));
