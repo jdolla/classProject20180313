@@ -15,10 +15,10 @@ var database = firebase.database();
 
 function saveClick(){
     var employee = {
-        name: `${$("inputName")}`,
-        role: `${$("inputRole")}`,
-        start: `${$("inputStartDate")}`,
-        rate: parseInt($("monthlyInput"))
+        name: `${$("#inputName").val()}`,
+        role: `${$("#inputRole").val()}`,
+        start: `${$("#inputStartDate").val()}`,
+        rate: parseInt($("#monthlyInput").val())
     };
 
     pushEmployee(employee);
